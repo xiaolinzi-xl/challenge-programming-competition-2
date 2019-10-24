@@ -19,6 +19,19 @@ def judge(arr, p, k):
     return count <= k
 
 
+def judge_1(arr, p, k):
+    index = 0
+    n = len(arr)
+    for i in range(k):
+        weight_sum = 0
+        while weight_sum + arr[index] <= p:
+            weight_sum += arr[index]
+            index += 1
+            if index >= n:
+                return True
+    return index >= n
+
+
 if __name__ == '__main__':
     n, k = map(int, input().split())
     weight = []
@@ -31,7 +44,7 @@ if __name__ == '__main__':
     ans = r
     while l <= r:
         mid = (l + r) // 2
-        if judge(weight, mid, k):
+        if judge_1(weight, mid, k):
             ans = mid
             r = mid - 1
         else:
