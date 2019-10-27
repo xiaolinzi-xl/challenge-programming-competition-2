@@ -14,13 +14,11 @@ if __name__ == '__main__':
     arr = list(map(int, input().split()))
     index = partition(arr, 0, n - 1)
     for i in range(n):
-        if i != n - 1:
-            if i != index:
-                print(arr[i], end=' ')
-            else:
-                print('[{}]'.format(arr[i]), end=' ')
-        else:
-            if i != index:
-                print(arr[i])
-            else:
-                print('[{}]'.format(arr[i]))
+        if i != 0:
+            print(' ', end='')
+        if i == index:
+            print('[', end='')
+        print(arr[i], end='')
+        if i == index:
+            print(']', end='')
+    print()
